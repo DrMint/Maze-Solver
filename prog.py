@@ -140,7 +140,7 @@ pygame.init()
 clock = pygame.time.Clock()
 
 # You can change the image here:
-maze = pygame.image.load('maze.png')
+maze = pygame.image.load('maze_hard.png')
 
 # Make sure the maze is correctly diplayed by calculating the correct size.
 mult = 1000 / maze.get_height()
@@ -166,6 +166,7 @@ state = 0           # State is used to define at what state of the program we ar
 points = [start]    # Points is the list of points to expand from.
 done = False
 base_fps = 60
+unlocked_fps = True;
 
 
 result_lenght = 0
@@ -198,7 +199,7 @@ while not done:
 
     # Displays the maze and ticks pygame's clock
     surface.blit(pygame.transform.scale(maze, win_size), ((0, 0)))
-    clock.tick(fps)
+    if not unlocked_fps: clock.tick(fps)
     pygame.display.flip()
 
     # Quit game if cross button clicked
